@@ -20,7 +20,7 @@ Las tres bases se encuentran descargadas en la carpeta "Fuente de datos". Asimis
 ### :key: Creación de las tablas y relaciones
 Por medio de SQL Server se creó la base de datos "Femicidios" y se importaron las 3 tablas con los datos: "Causas", "Víctimas" y "Sujetos Activos". Posteriormente, se crearon las tablas de dimensiones "Jurisdicción", "Tipo_femicidio", "Franja_horaria", "Tipo_víctima", "Género_víctima", "Arma", "Lugar" y "Vínculos" con las etiquetas asociadas a cada código presente en las tablas de hechos. 
 
-Script SQL con la creación de tablas y relaciones: https://github.com/Pazcabral/Femicidios/blob/main/Femicidios.sql
+Script SQL con la creación de tablas y relaciones: https://github.com/Pazcabral/Femicidios/blob/main/Femicidios_TablasyRelaciones.sql
 
 También por medio de SQL se realizaron las siguientes consultas con el objetivo de obtener insights para responder a los objetivos del proyecto: https://github.com/Pazcabral/Femicidios/blob/main/Femicidios_consultas.sql 
 
