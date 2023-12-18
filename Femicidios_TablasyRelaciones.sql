@@ -49,7 +49,7 @@ ALTER TABLE [dbo].[SujetosActivos]
 ALTER TABLE [dbo].[SujetosActivos]
 ADD FOREIGN KEY (Numrefcausa) REFERENCES [dbo].[Causas](Numrefcausa);
 
--- Creamos las tablas asociadas a las listas de c骴igos
+-- Creamos las tablas asociadas a las listas de c贸digos
 --TABLA JURISDICCION
 CREATE TABLE Jurisdiccion (
 	Id_jurisdiccion INT NOT NULL PRIMARY KEY,
@@ -59,42 +59,42 @@ INSERT INTO Jurisdiccion (Id_jurisdiccion, Jurisdiccion) VALUES
 (2, 'Ciudad de Buenos Aires'),
 (6, 'Provincia de Buenos Aires'),
 (10, 'Provincia de Catamarca'),
-(14, 'Provincia de C髍doba'),
+(14, 'Provincia de C贸rdoba'),
 (18, 'Provincia de Corrientes'),
 (22, 'Provincia de Chaco'),
 (26, 'Provincia de Chubut'),
-(30, 'Provincia de Entre R韔s'),
+(30, 'Provincia de Entre R铆os'),
 (34, 'Provincia de Formosa'),
 (38, 'Provincia de Jujuy'),
 (42, 'Provincia de La Pampa'),
 (46, 'Provincia de La Rioja'),
 (50, 'Provincia de Mendoza'),
 (54, 'Provincia de Misiones'),
-(58, 'Provincia de Neuqu閚'),
-(62, 'Provincia de R韔 Negro'),
+(58, 'Provincia de Neuqu茅n'),
+(62, 'Provincia de R铆o Negro'),
 (66, 'Provincia de Salta'),
 (70, 'Provincia de San Juan'),
 (74, 'Provincia de San Luis'),
 (78, 'Provincia de Santa Cruz'),
 (82, 'Provincia de Santa Fe'),
 (86, 'Provincia de Santiago del Estero'),
-(90, 'Provincia de Tucum醤'),
-(94, 'Provincia de Tierra del Fuego, Ant醨tida e Islas del Atl醤tico Sur');
+(90, 'Provincia de Tucum谩n'),
+(94, 'Provincia de Tierra del Fuego, Ant谩rtida e Islas del Atl谩ntico Sur');
 
--- Creamos las relaciones de la tabla Jurisdicci髇
--- Relaci髇 con tabla Causas 
+-- Creamos las relaciones de la tabla Jurisdicci贸n
+-- Relaci贸n con tabla Causas 
 ALTER TABLE [dbo].[Causas] ALTER COLUMN Jurisdiccion INT NOT NULL;
 
 ALTER TABLE [dbo].[Causas]
 ADD FOREIGN KEY (Jurisdiccion) REFERENCES [dbo].[Jurisdiccion](Id_jurisdiccion);
 
- -- Relaci髇 con tabla Victimas
+ -- Relaci贸n con tabla Victimas
 ALTER TABLE [dbo].[Victimas] ALTER COLUMN Jurisdiccion INT NOT NULL;
 
 ALTER TABLE [dbo].[Victimas]
 ADD FOREIGN KEY (Jurisdiccion) REFERENCES [dbo].[Jurisdiccion](Id_jurisdiccion);
 
- -- Relaci髇 con tabla SujetosActivos
+ -- Relaci贸n con tabla SujetosActivos
 ALTER TABLE [dbo].[SujetosActivos] ALTER COLUMN Jurisdiccion INT NOT NULL;
 
 ALTER TABLE [dbo].[SujetosActivos]
@@ -111,13 +111,13 @@ INSERT INTO Tipo_femicidio (Id_tipo, TipoFemicidio) VALUES
 (3, 'Femicidio directo y femicidio vinculado');
 
 -- Creamos las relaciones de la tabla Tipo_femicidio
--- Relaci髇 con la tabla Causas
+-- Relaci贸n con la tabla Causas
 ALTER TABLE [dbo].[Causas] ALTER COLUMN Tipo_femicidio INT NOT NULL;
 
 ALTER TABLE [dbo].[Causas]
 ADD FOREIGN KEY (Tipo_femicidio) REFERENCES [dbo].[Tipo_femicidio](Id_tipo);
 
--- Relaci髇 con tabla SujetosActivos
+-- Relaci贸n con tabla SujetosActivos
 ALTER TABLE [dbo].[SujetosActivos] ALTER COLUMN Tipo_femicidio INT NOT NULL;
 
 ALTER TABLE [dbo].[SujetosActivos]
@@ -147,10 +147,10 @@ CREATE TABLE Tipo_victima (
     Tipo VARCHAR(100) NOT NULL);
 
 INSERT INTO Tipo_victima (Id_tipo_victima, Tipo) VALUES
-(1, 'V韈tima directa de femicidio'),
-(2, 'V韈tima de femicidio vinculado'),
-(3, 'V韈tima de femicidio vinculado por interposici髇 en l韓ea de fuego'),
-(4, 'Otras muertes vinculadas a la violencia de g閚ero');
+(1, 'V铆ctima directa de femicidio'),
+(2, 'V铆ctima de femicidio vinculado'),
+(3, 'V铆ctima de femicidio vinculado por interposici贸n en l铆nea de fuego'),
+(4, 'Otras muertes vinculadas a la violencia de g茅nero');
 
 -- Creamos las relaciones de la tabla Tipo_victima
 ALTER TABLE [dbo].[Victimas] ALTER COLUMN Tipo_victima INT NOT NULL;
@@ -166,11 +166,11 @@ CREATE TABLE Genero_victima (
 INSERT INTO Genero_victima (Id_genero, Genero) VALUES
 (1, 'Mujer cis'),
 (2, 'Mujer trans / travesti'),
-(3, 'Var髇 cis'),
-(4, 'Var髇 trans'),
-(5, 'Otras identidades de g閚ero');
+(3, 'Var贸n cis'),
+(4, 'Var贸n trans'),
+(5, 'Otras identidades de g茅nero');
 
--- Relaciones de la tabla G閚ero
+-- Relaciones de la tabla G茅nero
 ALTER TABLE [dbo].[Victimas] ALTER COLUMN Genero_victima INT NOT NULL;
 
 ALTER TABLE [dbo].[Victimas]
@@ -185,20 +185,20 @@ INSERT INTO Arma (Id_arma, TipoArma) VALUES
 (1, 'Arma de fuego reglamentaria'),
 (2, 'Arma de fuego autorizada (no reglamentaria)'),
 (3, 'Arma de fuego no autorizada'),
-(4, 'Arma de fuego sin datos de autorizaci髇'),
+(4, 'Arma de fuego sin datos de autorizaci贸n'),
 (5, 'Arma blanca'),
 (6, 'Fuego / otros medios combustibles'),
-(7, 'Por intoxicaci髇 / venenos'),
-(8, 'Fuerza f韘ica'),
+(7, 'Por intoxicaci贸n / venenos'),
+(8, 'Fuerza f铆sica'),
 (9, 'Otros medios'),
-(10, 'Arma de fuego sin datos de autorizaci髇 y fuego / otros medios combustibles'),
-(11, 'Arma de fuego sin datos de autorizaci髇 y fuerza f韘ica'),
+(10, 'Arma de fuego sin datos de autorizaci贸n y fuego / otros medios combustibles'),
+(11, 'Arma de fuego sin datos de autorizaci贸n y fuerza f铆sica'),
 (12, 'Arma blanca y fuego / otros medios combustibles'),
-(13, 'Arma blanca y fuerza f韘ica'),
+(13, 'Arma blanca y fuerza f铆sica'),
 (14, 'Arma blanca y otros medios'),
-(15, 'Fuego / otros medios combustibles y fuerza f韘ica'),
-(16, 'Fuerza f韘ica y otros medios'),
-(17, 'Arma blanca, fuerza f韘ica y otros medios'),
+(15, 'Fuego / otros medios combustibles y fuerza f铆sica'),
+(16, 'Fuerza f铆sica y otros medios'),
+(17, 'Arma blanca, fuerza f铆sica y otros medios'),
 (999, 'Sin datos');
 
 -- Relaciones de la tabla Arma
@@ -213,13 +213,13 @@ Id_lugar INT NOT NULL PRIMARY KEY,
 Tipo_lugar VARCHAR(100) NOT NULL);
 
 INSERT INTO Lugar (Id_lugar, Tipo_lugar) VALUES
-(1, 'Vivienda de la v韈tima'),
+(1, 'Vivienda de la v铆ctima'),
 (2, 'Vivienda del sujeto activo'),
-(3, 'Vivienda compartida entre la v韈tima y el sujeto activo'),
-(4, 'Otra vivienda (ni de la v韈tima ni del sujeto activo)'),
+(3, 'Vivienda compartida entre la v铆ctima y el sujeto activo'),
+(4, 'Otra vivienda (ni de la v铆ctima ni del sujeto activo)'),
 (5, 'Hotel / motel / hotel alojamiento (sin residencia permanente)'),
-(6, 'Lugar de trabajo de la v韈tima'),
-(7, 'Espacio p鷅lico'),
+(6, 'Lugar de trabajo de la v铆ctima'),
+(7, 'Espacio p煤blico'),
 (8, 'Otro lugar'),
 (999, 'Sin datos');
 
@@ -261,8 +261,8 @@ Id_genero_sujeto INT NOT NULL PRIMARY KEY,
 Genero_sujetoactivo VARCHAR (100) NOT NULL);
 
 INSERT INTO Genero_SujetoAct (Id_genero_sujeto, Genero_sujetoactivo) VALUES
-(1, 'Var髇 cis'),
-(2, 'Var髇 trans'),
+(1, 'Var贸n cis'),
+(2, 'Var贸n trans'),
 (999, 'Sin datos');
 
 -- Relaciones de la tabla Genero_SujetoAct
