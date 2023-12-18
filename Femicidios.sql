@@ -9,8 +9,7 @@ SELECT TOP 10 * FROM dbo.Causas;
 
 SELECT TOP 10 * FROM dbo.Victimas;
 
-SELECT TOP 10 * FROM dbo.SujetosActivos
-WHERE Numrefcausa = 2021027;
+SELECT TOP 10 * FROM dbo.SujetosActivos;
 
 -- Obtenemos los nombres de las columnas
 SELECT COLUMN_NAME
@@ -51,7 +50,7 @@ ALTER TABLE [dbo].[SujetosActivos]
 ADD FOREIGN KEY (Numrefcausa) REFERENCES [dbo].[Causas](Numrefcausa);
 
 -- Creamos las tablas asociadas a las listas de códigos
---JURISDICCION
+--TABLA JURISDICCION
 CREATE TABLE Jurisdiccion (
 	Id_jurisdiccion INT NOT NULL PRIMARY KEY,
 	Jurisdiccion VARCHAR(100) NOT NULL);
@@ -101,7 +100,7 @@ ALTER TABLE [dbo].[SujetosActivos] ALTER COLUMN Jurisdiccion INT NOT NULL;
 ALTER TABLE [dbo].[SujetosActivos]
 ADD FOREIGN KEY (Jurisdiccion) REFERENCES [dbo].[Jurisdiccion](Id_jurisdiccion);
 
---TIPO DE FEMICIDIO
+--TABLA TIPO DE FEMICIDIO
 CREATE TABLE Tipo_femicidio (
     Id_tipo INT NOT NULL PRIMARY KEY,
     TipoFemicidio VARCHAR(100) NOT NULL);
@@ -124,7 +123,7 @@ ALTER TABLE [dbo].[SujetosActivos] ALTER COLUMN Tipo_femicidio INT NOT NULL;
 ALTER TABLE [dbo].[SujetosActivos]
 ADD FOREIGN KEY (Tipo_femicidio) REFERENCES [dbo].[Tipo_femicidio](Id_tipo);
 
--- FRANJA_HORARIA
+-- TABLA FRANJA_HORARIA
 CREATE TABLE Franja_horaria (
     Id_franja INT NOT NULL PRIMARY KEY,
     Horario VARCHAR(50) NOT NULL);
@@ -142,7 +141,7 @@ ALTER TABLE [dbo].[Causas] ALTER COLUMN Franja_horaria INT NOT NULL;
 ALTER TABLE [dbo].[Causas]
 ADD FOREIGN KEY (Franja_horaria) REFERENCES [dbo].[Franja_horaria](Id_franja);
 
--- Tipo_victima
+-- TABLA Tipo_victima
 CREATE TABLE Tipo_victima (
     Id_tipo_victima INT NOT NULL PRIMARY KEY,
     Tipo VARCHAR(100) NOT NULL);
@@ -159,7 +158,7 @@ ALTER TABLE [dbo].[Victimas] ALTER COLUMN Tipo_victima INT NOT NULL;
 ALTER TABLE [dbo].[Victimas]
 ADD FOREIGN KEY (Tipo_victima) REFERENCES [dbo].[Tipo_victima](Id_tipo_victima);
 
--- GENERO
+-- TABLA GENERO
 CREATE TABLE Genero_victima (
     Id_genero INT NOT NULL PRIMARY KEY,
     Genero VARCHAR(100) NOT NULL);
@@ -177,7 +176,7 @@ ALTER TABLE [dbo].[Victimas] ALTER COLUMN Genero_victima INT NOT NULL;
 ALTER TABLE [dbo].[Victimas]
 ADD FOREIGN KEY (Genero_victima) REFERENCES [dbo].[Genero_victima](Id_genero);
 
--- ARMA
+-- TABLA ARMA
 CREATE TABLE Arma (
 Id_arma INT NOT NULL PRIMARY KEY,
 TipoArma VARCHAR (100) NOT NULL);
@@ -208,7 +207,7 @@ ALTER TABLE [dbo].[Victimas] ALTER COLUMN Medio_empleado INT NOT NULL;
 ALTER TABLE [dbo].[Victimas]
 ADD FOREIGN KEY (Medio_empleado) REFERENCES [dbo].[Arma](Id_arma);
 
---LUGAR
+-- TABLA LUGAR
 CREATE TABLE Lugar (
 Id_lugar INT NOT NULL PRIMARY KEY, 
 Tipo_lugar VARCHAR(100) NOT NULL);
@@ -230,7 +229,7 @@ ALTER TABLE [dbo].[Victimas] ALTER COLUMN Lugar INT NOT NULL;
 ALTER TABLE [dbo].[Victimas]
 ADD FOREIGN KEY (Lugar) REFERENCES [dbo].[Lugar](Id_lugar);
 
--- VINCULOS
+-- TABLA VINCULOS
 CREATE TABLE Vinculos (
 Id_vinculo INT NOT NULL PRIMARY KEY, 
 Vinculo_victima_sujetoactivo VARCHAR (100) NOT NULL);
@@ -256,7 +255,7 @@ ALTER TABLE [dbo].[Victimas] ALTER COLUMN Vinculo_1 INT NOT NULL;
 ALTER TABLE [dbo].[Victimas]
 ADD FOREIGN KEY (Vinculo_1) REFERENCES [dbo].[Vinculos](Id_vinculo);
 
--- Genero SujetosActivos
+-- TABLA Genero SujetosActivos
 CREATE TABLE Genero_SujetoAct (
 Id_genero_sujeto INT NOT NULL PRIMARY KEY, 
 Genero_sujetoactivo VARCHAR (100) NOT NULL);
